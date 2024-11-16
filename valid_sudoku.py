@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 def soln(board):
-    rows = {}
     for i in range(len(board)):
+        rows = {}
         for j in range(len(board[i])):
             if board[i][j].isdigit():
                 if board[i][j] in rows:
@@ -9,11 +9,10 @@ def soln(board):
                     return False
                 else:
                     rows[board[i][j]] = 1
-        rows = {}
 
-    cols = {}
-    idx = 0
     for i in range(9):
+        cols = {}
+        idx = 0
         while idx<9:
             if board[idx][i].isdigit():
                 if board[idx][i] in cols:
@@ -22,8 +21,6 @@ def soln(board):
                 else:
                     cols[board[idx][i]] = 1
             idx += 1
-        cols = {}
-        idx = 0
 
     box = {}
     dirs = [[-1,-1],[-1,0],[-1,1],
