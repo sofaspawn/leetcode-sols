@@ -1,18 +1,27 @@
 #! /usr/bin/env python3
 
-def soln(s):
-    freq = {}
-    i = 0
-    lens = []
-    if len(s)==1:
-        return 1
-    while i<len(s):
-        if s[i] in freq:
-            lens.append(len(list(freq.keys())))
-            freq = {}
-        freq[s[i]]=1
-        i+=1
-    return max(lens)
+class Solution:
+    def soln(self,s):
+        freq = {}
+        i = 0
+        j = 0
+        lens = []
+        while j<len(s):
+            while i<len(s):
+                if s[i] in freq:
+                    lens.append(len(list(freq.keys())))
+                    freq = {}
+                freq[s[i]]=1
+                i+=1
+            j+=1
+            i=j
+        lens.append(len(list(freq.keys())))
+        if lens:
+            return max(lens)
+        else:
+            return len(s)
 
-s = "pwwkew"
-print(soln(s))
+#s = "dvdf"
+s = "asjrgapa"
+sol = Solution()
+print(sol.soln(s))
