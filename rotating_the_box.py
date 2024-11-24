@@ -2,21 +2,16 @@
 
 class Solution:
     def rotateTheBox(self, box):
-        nbox = self.rotbox(box)
-        y = len(nbox)-1
-        while y>=0:
-            x = 0
-            while x<len(nbox[y]):
-                if y+1>=len(nbox):
-                    x+=1
-                    continue
-                else:
-                    if nbox[y+1][x]=="." and nbox[y][x]=="#":
-                        nbox[y+1][x] = nbox[y][x]
-                        nbox[y][x] = "."
-                    x+=1
-            y+=1
-        return nbox
+        nbox = [row[:] for row in box]
+        for y in range(len(nbox)):
+            empty = len(nbox[y])-1
+            for x in range(len(nbox[y])-1, -1, -1):
+                if nbox[y][x]=="#":
+                    nbox[y][x], nbox[y][empty] = ".", "#"
+                    empty-=1
+                elif nbox[y][x]=="*":
+                    empty=x-1
+        return self.rotbox(nbox)
     def rotbox(self, box):
         nbox = []
         x = 0
