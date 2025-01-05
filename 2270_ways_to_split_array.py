@@ -2,4 +2,3 @@
 
 def waysToSplitArray(nums):
     return 0
-
