@@ -2,6 +2,9 @@
  * @param {string} digits
  * @return {string[]}
  */
+
+// need to learn algorithms like backtracking, depth first search, etc.
+
 var letterCombinations = function(digits) {
     if (digits.length === 0) return [];
     let phone = {
